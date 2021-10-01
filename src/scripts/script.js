@@ -110,8 +110,7 @@ const showImage = () => {
 	// Show and change the source of the image.
 	dispImg.src = pickableImages[imageSource];
 	dispImg.classList.add("visible");
-
-	console.log(pickableImages[imageSource]);
+	document.querySelector(".closeImageText").classList.add("visible");
 
 	document
 		.querySelector(
@@ -128,6 +127,7 @@ const showImage = () => {
 const closeImage = () => {
 	// Hide the image.
 	dispImg.classList.remove("visible");
+	document.querySelector(".closeImageText").classList.remove("visible");
 
 	// Allow spinning again.
 	if (pickableImages.length !== 0) {
