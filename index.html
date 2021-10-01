@@ -1,19 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>BINGO!</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>BINGO!</title>
 
-		<link rel="stylesheet" href="src/styles/style.css" />
-	</head>
-	<body>
-		<div class="game"></div>
-		<div class="wheel" onclick="spinWheel(2)"></div>
-		<img src="" alt="" class="displayImg" onClick="closeImage()" />
-		<div class="closeImageText">Click the image to close it.</div>
+        <link rel="stylesheet" href="src/styles/style.css" />
+    </head>
+    <body>
+        <div class="game"></div>
+        <div class="wheel" onclick="spinWheel(2)">
+            <p>I</p>
+            <p>2</p>
+            <p>3</p>
+            <p>4</p>
+            <p>5</p>
+            <p>6</p>
+            <p>7</p>
+            <p>8</p>
+            <p>9</p>
+            <p>10</p>
+            <p>11</p>
+            <p>12</p>
+            <p>13</p>
+            <p>14</p>
+            <p>15</p>
+            <p>16</p>
+        </div>
+        <img src="" alt="" class="displayImg" onClick="closeImage()" />
+        <div class="closeImageText">Click the image to close it.</div>
 
-		<script src="src/scripts/script.js"></script>
-	</body>
+        <div class="modal">
+            <div class="top">
+                <h1>Are you a...</h1>
+                <div class="buttons">
+                    <button class="btn" onclick="setUser('player')">Player</button>
+                    <span>or a</span>
+                    <button class="btn" onclick="setUser('caller')">Caller</button>
+                </div>
+            </div>
+            <p>The caller selects and calls out images! Only one of the players
+                should be the caller.</p>
+        </div>
+
+        <p class="message">Made by Tim... He made this. :O :|</p>
+
+        <script src="src/scripts/script.js"></script>
+    </body>
 </html>

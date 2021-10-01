@@ -1,10 +1,10 @@
-$background-light: #669dd4;
-$background-dark: #385c80;
+$background-light: lightcoral;
+$background-dark: #a15454;
 
 $radius: 1rem;
 $transition: all 0.25s;
-$light-shadow: 0px 5px 5px #0000007a;
-$dark-shadow: 0px 5px 5px #000000;
+$light-shadow: 0px 0px 15px black;
+$dark-shadow: 0px 5px 5px black;
 
 @mixin box($width, $height: $width) {
 	width: $width;

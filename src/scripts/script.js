@@ -4,8 +4,25 @@ const gameBoard = document.querySelector(".game");
 
 let imageArray = [];
 let pickableImages = [];
+let userType = "player";
+
+const setUser = (type) => {
+	userType = type;
+
+	setup();
+
+	document.querySelector(".modal").style.display = "none";
+};
+
+const setup = () => {
+	if (userType === "player") {
+		wheel.classList.add("hidden");
+	}
+};
 
 const toggle = (tile) => {
+	if (userType === "caller") return;
+
 	tile.classList.toggle("active");
 };
 
@@ -48,11 +65,11 @@ const resizeBoard = () => {
 		gameBoard.style.width = `${window.innerHeight * sizeDif}px`;
 		gameBoard.style.height = `${window.innerHeight * sizeDif}px`;
 
-		for (let child of gameBoard.childNodes) {
-			child.style.borderWidth = `${Math.round(
-				(window.innerHeight * sizeDif) / 100
-			)}px`;
-		}
+		// for (let child of gameBoard.childNodes) {
+		// 	child.style.borderWidth = `${Math.round(
+		// 		(window.innerHeight * sizeDif) / 100
+		// 	)}px`;
+		// }
 
 		try {
 			document.querySelector(".displayImg").style.width = `${
@@ -66,11 +83,11 @@ const resizeBoard = () => {
 		gameBoard.style.width = `${window.innerWidth * sizeDif}px`;
 		gameBoard.style.height = `${window.innerWidth * sizeDif}px`;
 
-		for (let child of gameBoard.childNodes) {
-			child.style.borderWidth = `${Math.round(
-				(window.innerWidth * sizeDif) / 100
-			)}px`;
-		}
+		// for (let child of gameBoard.childNodes) {
+		// 	child.style.borderWidth = `${Math.round(
+		// 		(window.innerWidth * sizeDif) / 100
+		// 	)}px`;
+		// }
 
 		try {
 			document.querySelector(".displayImg").style.width = `${
@@ -91,21 +108,29 @@ const dispImg = document.querySelector(".displayImg");
 let canSpin = true;
 
 const spinWheel = (s) => {
-	if (!canSpin || pickableImages.length === 0) return;
+	if (!canSpin || pickableImages.length === 0 || userType === "player")
+		return;
 
 	canSpin = false;
 
 	wheel.classList.add("spinning");
 };
 
+let pickedIndex = 0;
 wheel.addEventListener("animationend", () => {
 	wheel.classList.remove("spinning");
 
 	showImage();
+
+	wheel.style = `transform: translateY(-50%) rotate(${
+		(pickedIndex / 16) * 360 + 75
+	}deg)`;
+	console.log(pickedIndex);
 });
 
 const showImage = () => {
 	let imageSource = Math.floor(Math.random() * pickableImages.length);
+	pickedIndex = imageSource + 1;
 
 	// Show and change the source of the image.
 	dispImg.src = pickableImages[imageSource];

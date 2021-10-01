@@ -42,45 +42,150 @@
   position: absolute;
   top: 50%;
   right: -12.5vh;
-  transform: translateY(-50%);
-  box-shadow: 0px 0px 10px black;
+  transform: translateY(-50%) rotate(67.5deg);
+  box-shadow: 0px 0px 15px black;
+}
+.wheel p:nth-child(3n+1) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-weight: bolder;
+  transform: translate(-50%, -50%) rotate(22.5deg) translateY(11vh);
+}
+.wheel p:nth-child(3n+2) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-weight: bolder;
+  transform: translate(-50%, -50%) rotate(45deg) translateY(11vh);
+}
+.wheel p:nth-child(3n+3) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-weight: bolder;
+  transform: translate(-50%, -50%) rotate(67.5deg) translateY(11vh);
+}
+.wheel p:nth-child(3n+4) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-weight: bolder;
+  transform: translate(-50%, -50%) rotate(90deg) translateY(11vh);
+}
+.wheel p:nth-child(3n+5) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-weight: bolder;
+  transform: translate(-50%, -50%) rotate(112.5deg) translateY(11vh);
+}
+.wheel p:nth-child(3n+6) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-weight: bolder;
+  transform: translate(-50%, -50%) rotate(135deg) translateY(11vh);
+}
+.wheel p:nth-child(3n+7) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-weight: bolder;
+  transform: translate(-50%, -50%) rotate(157.5deg) translateY(11vh);
+}
+.wheel p:nth-child(3n+8) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-weight: bolder;
+  transform: translate(-50%, -50%) rotate(180deg) translateY(11vh);
+}
+.wheel p:nth-child(3n+9) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-weight: bolder;
+  transform: translate(-50%, -50%) rotate(202.5deg) translateY(11vh);
+}
+.wheel p:nth-child(3n+10) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-weight: bolder;
+  transform: translate(-50%, -50%) rotate(225deg) translateY(11vh);
+}
+.wheel p:nth-child(3n+11) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-weight: bolder;
+  transform: translate(-50%, -50%) rotate(247.5deg) translateY(11vh);
+}
+.wheel p:nth-child(3n+12) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-weight: bolder;
+  transform: translate(-50%, -50%) rotate(270deg) translateY(11vh);
+}
+.wheel p:nth-child(3n+13) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-weight: bolder;
+  transform: translate(-50%, -50%) rotate(292.5deg) translateY(11vh);
+}
+.wheel p:nth-child(3n+14) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-weight: bolder;
+  transform: translate(-50%, -50%) rotate(315deg) translateY(11vh);
+}
+.wheel p:nth-child(3n+15) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-weight: bolder;
+  transform: translate(-50%, -50%) rotate(337.5deg) translateY(11vh);
+}
+.wheel p:nth-child(3n+16) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-weight: bolder;
+  transform: translate(-50%, -50%) rotate(360deg) translateY(11vh);
 }
 .wheel.hidden {
   right: -26vh;
 }
 .wheel.spinning {
-  -webkit-animation: spin 0.3s linear;
-          animation: spin 0.3s linear;
-  -webkit-animation-iteration-count: 5;
-          animation-iteration-count: 5;
+  -webkit-animation: spin 2s linear;
+          animation: spin 2s linear;
+  -webkit-animation-iteration-count: 2;
+          animation-iteration-count: 2;
 }
 @-webkit-keyframes spin {
   0% {
-    transform: translateY(-50%) rotate(0deg);
+    transform: translateY(-50%) rotate(67.5deg);
   }
   100% {
-    transform: translateY(-50%) rotate(360deg);
+    transform: translateY(-50%) rotate(427.5deg);
   }
 }
 @keyframes spin {
   0% {
-    transform: translateY(-50%) rotate(0deg);
+    transform: translateY(-50%) rotate(67.5deg);
   }
   100% {
-    transform: translateY(-50%) rotate(360deg);
+    transform: translateY(-50%) rotate(427.5deg);
   }
 }
-.wheel::after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 10%;
-  height: 1%;
-  position: relative;
-  top: 50%;
-  left: 0;
-  background: red;
-  z-index: 1;
+.wheel p:nth-child(1) {
+  color: red;
+  font-weight: bolder;
+  font-size: 2rem;
 }
 
 .game {
@@ -91,6 +196,7 @@
   height: 50%;
   padding: 1rem;
   transform: translate(-50%, -50%);
+  box-shadow: 0px 0px 15px black;
   background: white;
   border-radius: 1rem;
   display: grid;
@@ -102,17 +208,18 @@
 .game .tile {
   width: 90%;
   height: 90%;
-  border: 0 solid transparent;
   border-radius: 1rem;
   background-size: cover;
   -webkit-user-drag: none;
   transition: all 0.25s;
 }
 .game .tile.active {
-  border: 0 solid #385c80;
+  transform: translate(-5px, -5px);
+  box-shadow: 5px 5px 0px lightcoral;
 }
 .game .tile.selected {
-  border: 0 solid tomato;
+  transform: translate(-5px, -5px);
+  box-shadow: 5px 5px 0px #a15454;
 }
 
 *,
@@ -126,6 +233,7 @@
       -ms-user-select: none;
           user-select: none;
   -webkit-user-drag: none;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 html,
@@ -139,5 +247,84 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #669dd4;
+  background: linear-gradient(45deg, lightcoral, coral);
+}
+
+.message {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: white;
+  font-weight: bolder;
+  z-index: 1000;
+  padding: 0.5rem;
+}
+
+.modal {
+  width: 100vw;
+  height: 100vh;
+  background: #521e1e8a;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  font-weight: bolder;
+}
+.modal h1,
+.modal p {
+  background: white;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  border: 2px solid black;
+}
+.modal .top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+.modal .top .buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+  gap: 1rem;
+  width: 100%;
+  width: 50%;
+}
+.modal .top .buttons span {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  text-transform: uppercase;
+  -webkit-text-stroke: 1px black;
+  background: -webkit-linear-gradient(45deg, lightcoral, coral);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.modal .top .buttons .btn {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  border-radius: 1rem;
+  background-color: white;
+  font-weight: 500;
+  transition: all 0.25s;
+  transition-timing-function: ease-in-out;
+}
+.modal .top .buttons .btn:hover {
+  transform: translate(-5px, -5px);
+  box-shadow: 5px 5px 0px lightcoral;
+}
+.modal .top .buttons .btn:active {
+  transform: translate(0px);
+  box-shadow: none;
 }/*# sourceMappingURL=style.css.map */

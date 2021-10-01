@@ -10,6 +10,8 @@
 
 	user-select: none;
 	-webkit-user-drag: none;
+
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 html,
@@ -25,5 +27,107 @@ body {
 	flex-direction: column;
 	align-items: center;
 
-	background-color: $background-light;
+	// background-color: $background-light;
+	background: linear-gradient(45deg, lightcoral, coral);
+}
+
+.message {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+
+	color: white;
+	font-weight: bolder;
+
+	z-index: 1000;
+	padding: 0.5rem;
+}
+
+.modal {
+	width: 100vw;
+	height: 100vh;
+
+	background: #521e1e8a;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 999;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	flex-direction: column;
+
+	font-weight: bolder;
+
+	h1,
+	p {
+		background: white;
+		border-radius: $radius;
+		padding: 1rem 2rem;
+
+		border: 2px solid black;
+	}
+
+	.top {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-evenly;
+
+		width: 100%;
+
+		.buttons {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			margin: 1rem;
+
+			gap: 1rem;
+
+			width: 100%;
+
+			span {
+				width: max-content;
+				font-size: 1.5rem;
+				font-weight: bolder;
+				text-transform: uppercase;
+				-webkit-text-stroke: 1px black;
+
+				background: -webkit-linear-gradient(45deg, lightcoral, coral);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+
+			.btn {
+				padding: 1rem 2rem;
+				font-size: 1rem;
+
+				outline: none;
+				border: none;
+
+				border-radius: $radius;
+				background-color: white;
+
+				font-weight: 500;
+
+				transition: $transition;
+				transition-timing-function: ease-in-out;
+
+				&:hover {
+					transform: translate(-5px, -5px);
+					box-shadow: 5px 5px 0px lightcoral;
+				}
+
+				&:active {
+					transform: translate(0px);
+					box-shadow: none;
+				}
+			}
+
+			width: 50%;
+		}
+	}
 }
