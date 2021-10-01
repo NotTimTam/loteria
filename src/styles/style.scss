@@ -1,0 +1,29 @@
+@import "./variables";
+@import "./game";
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+
+	user-select: none;
+	-webkit-user-drag: none;
+}
+
+html,
+body {
+	width: 100vw;
+	height: 100vh;
+
+	overflow: hidden;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	background-color: $background-light;
+}
