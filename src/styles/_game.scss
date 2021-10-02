@@ -32,7 +32,6 @@
 	top: calc(100% + 50vh);
 	left: 50%;
 
-	width: 50%;
 	height: 50%;
 
 	padding: 1rem;
@@ -95,6 +94,36 @@
 
 		box-shadow: $light-shadow;
 
+		.fadingText {
+			position: absolute;
+			top: -30%;
+			right: 7rem;
+			background-color: white;
+
+			border-radius: $radius;
+			box-shadow: $light-shadow;
+			padding: 1rem;
+
+			width: max-content;
+
+			&.gone {
+				opacity: 0;
+			}
+
+			&.fading {
+				animation: fade 1s linear;
+				animation-delay: 2s;
+				@keyframes fade {
+					99% {
+						opacity: 0;
+					}
+					100% {
+						display: none;
+					}
+				}
+			}
+		}
+
 		@for $i from 1 through 24 {
 			p:nth-child(#{$i}) {
 				position: absolute;
@@ -112,7 +141,7 @@
 		}
 
 		&.hidden {
-			right: -35vh;
+			right: -50vh;
 		}
 
 		&.spinning {
@@ -137,7 +166,7 @@
 	top: 50%;
 	left: 50%;
 
-	width: 50%;
+	width: 45%;
 	height: 50%;
 
 	padding: 1rem;
@@ -157,8 +186,7 @@
 	align-items: center;
 
 	.tile {
-		width: 90%;
-		height: 90%;
+		width: 60%;
 
 		// border: 0 solid transparent;
 		border-radius: $radius;

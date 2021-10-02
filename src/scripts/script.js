@@ -17,6 +17,9 @@ const setUser = (type) => {
 const setup = () => {
 	if (userType === "player") {
 		wheel.classList.add("hidden");
+	} else {
+		wheel.classList.remove("hidden");
+		document.querySelector(".fadingText").classList.add("fading");
 	}
 };
 
@@ -33,7 +36,7 @@ const populateGrid = () => {
 	// Generate image array.
 	imageArray = [];
 	pickableImages = [];
-	for (let i = 1; i < 25; i++) {
+	for (let i = 1; i < 21; i++) {
 		imageArray.push(`./src/images/ (${i}).jpg`);
 		pickableImages.push(`./src/images/ (${i}).jpg`);
 	}
@@ -61,7 +64,7 @@ const resizeBoard = () => {
 	const sizeDif = 0.9;
 
 	if (window.innerWidth * sizeDif > window.innerHeight * sizeDif) {
-		gameBoard.style.width = `${window.innerHeight * sizeDif}px`;
+		gameBoard.style.width = `${window.innerHeight * sizeDif * 0.9}px`;
 		gameBoard.style.height = `${window.innerHeight * sizeDif}px`;
 
 		// for (let child of gameBoard.childNodes) {
@@ -71,15 +74,12 @@ const resizeBoard = () => {
 		// }
 
 		try {
-			document.querySelector(".displayImg").style.width = `${
-				window.innerHeight * sizeDif
-			}px`;
 			document.querySelector(".displayImg").style.height = `${
 				window.innerHeight * sizeDif
 			}px`;
 		} catch {}
 	} else {
-		gameBoard.style.width = `${window.innerWidth * sizeDif}px`;
+		gameBoard.style.width = `${window.innerWidth * sizeDif * 0.9}px`;
 		gameBoard.style.height = `${window.innerWidth * sizeDif}px`;
 
 		// for (let child of gameBoard.childNodes) {
@@ -89,9 +89,6 @@ const resizeBoard = () => {
 		// }
 
 		try {
-			document.querySelector(".displayImg").style.width = `${
-				window.innerWidth * sizeDif
-			}px`;
 			document.querySelector(".displayImg").style.height = `${
 				window.innerWidth * sizeDif
 			}px`;
@@ -113,6 +110,7 @@ const spinWheel = (s) => {
 	canSpin = false;
 
 	wheel.classList.add("spinning");
+	document.querySelector(".fadingText").classList.add("gone");
 };
 
 let pickedIndex = 0;
@@ -122,7 +120,7 @@ wheel.addEventListener("animationend", () => {
 	showImage();
 
 	wheel.style = `transform: translateY(-50%) rotate(${-(
-		(pickedIndex / 24) * 360 -
+		(pickedIndex / 20) * 360 -
 		22.5
 	)}deg)`;
 	console.log(pickedIndex);
