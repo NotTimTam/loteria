@@ -32,13 +32,10 @@ const populateGrid = () => {
 
 	// Generate image array.
 	imageArray = [];
+	pickableImages = [];
 	for (let i = 1; i < 25; i++) {
 		imageArray.push(`./src/images/ (${i}).jpg`);
-	}
-
-	// Remove random excess images.
-	while (imageArray.length > 16) {
-		imageArray.splice(Math.floor(Math.random() * imageArray.length), 1);
+		pickableImages.push(`./src/images/ (${i}).jpg`);
 	}
 
 	// Shuffle the array.
@@ -47,8 +44,10 @@ const populateGrid = () => {
 		[imageArray[i], imageArray[j]] = [imageArray[j], imageArray[i]];
 	}
 
-	// Populate the pickableImages array.
-	pickableImages = [...imageArray];
+	// Remove random excess images.
+	while (imageArray.length > 16) {
+		imageArray.pop(0);
+	}
 
 	// Generate image objects.
 	for (let i = 0; i < 16; i++) {
@@ -122,28 +121,39 @@ wheel.addEventListener("animationend", () => {
 
 	showImage();
 
-	wheel.style = `transform: translateY(-50%) rotate(${
-		(pickedIndex / 16) * 360 + 75
-	}deg)`;
+	wheel.style = `transform: translateY(-50%) rotate(${-(
+		(pickedIndex / 24) * 360 -
+		22.5
+	)}deg)`;
 	console.log(pickedIndex);
 });
 
 const showImage = () => {
-	let imageSource = Math.floor(Math.random() * pickableImages.length);
-	pickedIndex = imageSource + 1;
+	let randomIDInPickableImages = Math.floor(
+		Math.random() * pickableImages.length
+	);
+	pickedIndex = randomIDInPickableImages + 1;
 
 	// Show and change the source of the image.
-	dispImg.src = pickableImages[imageSource];
+	dispImg.src = pickableImages[randomIDInPickableImages];
 	dispImg.classList.add("visible");
 	document.querySelector(".closeImageText").classList.add("visible");
 
-	document
-		.querySelector(
-			`.tile-${imageArray.indexOf(pickableImages[imageSource])}`
-		)
-		.classList.add("selected");
+	try {
+		document
+			.querySelector(
+				`.tile-${imageArray.indexOf(
+					pickableImages[randomIDInPickableImages]
+				)}`
+			)
+			.classList.add("selected");
+	} catch {
+		console.warn(`The caller doesn't have ${pickedIndex}`);
+	}
 
-	pickableImages.splice(imageSource, 1);
+	document.querySelector(`#number-${pickedIndex}`).style.opacity = 0.5;
+
+	pickableImages.splice(randomIDInPickableImages, 1);
 
 	// Resize the image.
 	resizeBoard();

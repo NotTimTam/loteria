@@ -51,60 +51,84 @@
 	}
 }
 
-.wheel {
-	width: 25vh;
-	height: 25vh;
+.wheelSpace {
+	// .wheelArm {
+	// 	position: absolute;
+	// 	top: 50%;
+	// 	right: calc(25vh / 2 - 2.6rem);
 
-	border-radius: 50%;
-	background: white;
+	// 	transform: translateY(-50%);
 
-	position: absolute;
-	top: 50%;
-	right: -12.5vh;
+	// 	background: #ff00007e;
+	// 	width: 1.5rem;
+	// 	height: 1.5rem;
 
-	transform: translateY(-50%) rotate(90deg - 22.5deg);
+	// 	border-radius: 50%;
+	// }
 
-	box-shadow: $light-shadow;
+	.wheel {
+		width: 30vh;
+		height: 30vh;
 
-	@for $i from 1 through 16 {
-		p:nth-child(3n + #{$i}) {
-			position: absolute;
+		border-radius: 50%;
+		background: white;
+
+		position: absolute;
+		top: 50%;
+		right: -15vh;
+
+		.pin {
+			position: relative;
 			top: 50%;
 			left: 50%;
 
-			font-weight: bolder;
+			transform: translate(-50%, -50%);
 
-			transform: translate(-50%, -50%)
-				rotate(($i / 16) * 360deg)
-				translateY(11vh);
+			background: black;
+			width: 1rem;
+			height: 1rem;
 
-			// transform: rotate(($i / 16) * 360deg);
+			border-radius: 50%;
 		}
-	}
 
-	&.hidden {
-		right: -26vh;
-	}
+		transform: translateY(-50%); // rotate(90deg - 22.5deg);
 
-	&.spinning {
-		animation: spin 2s linear;
+		box-shadow: $light-shadow;
 
-		animation-iteration-count: 2;
+		@for $i from 1 through 24 {
+			p:nth-child(#{$i}) {
+				position: absolute;
+				top: 50%;
+				left: 50%;
 
-		@keyframes spin {
-			0% {
-				transform: translateY(-50%) rotate(90deg - 22.5deg);
-			}
-			100% {
-				transform: translateY(-50%) rotate(360deg + 67.5);
+				font-weight: bolder;
+
+				transform: translate(-50%, -50%)
+					rotate(($i / 24) * 360deg + 67.5)
+					translateY(13vh);
+
+				// transform: rotate(($i / 16) * 360deg);
 			}
 		}
-	}
 
-	p:nth-child(1) {
-		color: red;
-		font-weight: bolder;
-		font-size: 2rem;
+		&.hidden {
+			right: -35vh;
+		}
+
+		&.spinning {
+			animation: spin 1s linear;
+
+			animation-iteration-count: 1;
+
+			@keyframes spin {
+				0% {
+					transform: translateY(-50%) rotate(90deg - 22.5deg);
+				}
+				100% {
+					transform: translateY(-50%) rotate(360deg + 67.5);
+				}
+			}
+		}
 	}
 }
 

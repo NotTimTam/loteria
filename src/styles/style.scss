@@ -61,45 +61,172 @@ body {
 
 	font-weight: bolder;
 
-	h1,
-	p {
-		background: white;
-		border-radius: $radius;
-		padding: 1rem 2rem;
-
-		border: 2px solid black;
-	}
-
-	.top {
+	.modalPopout {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: space-evenly;
+		justify-content: space-between;
 
-		width: 100%;
+		width: 70vw;
+		height: 70vh;
+
+		max-width: 550px;
+		min-width: 400px;
+
+		background: white;
+		border-radius: $radius;
+
+		padding: 2rem;
+
+		.marquee {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+
+			border: 0.5rem solid #6e2c2c;
+			background: black;
+
+			margin-top: 1rem;
+
+			border-radius: $radius;
+
+			padding: 0.25rem;
+
+			.light {
+				width: 1rem;
+				height: 1rem;
+				background-color: #1a1a1a;
+
+				border: 1px solid black;
+
+				border-radius: 50%;
+
+				animation: pulse 0.5s infinite;
+				animation-timing-function: steps(1, end);
+
+				@keyframes pulse {
+					0% {
+						background-color: #faca08;
+					}
+
+					50% {
+						background-color: #1a1a1a;
+					}
+
+					100% {
+						background-color: #faca08;
+					}
+				}
+			}
+
+			.lightSection {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+
+				width: 100%;
+
+				@for $i from 1 through 10 {
+					.light:nth-child(2n) {
+						animation-delay: 0.25s;
+					}
+				}
+			}
+
+			.inner {
+				display: flex;
+				align-items: center;
+				justify-content: space-evenly;
+
+				.verticalLightSection {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: space-evenly;
+					height: 100%;
+
+					&:nth-child(1) {
+						@for $i from 1 through 3 {
+							.light:nth-child(2n + 1) {
+								animation-delay: 0.25s;
+							}
+						}
+					}
+
+					&:nth-child(3) {
+						@for $i from 1 through 3 {
+							.light:nth-child(2n) {
+								animation-delay: 0.25s;
+							}
+						}
+					}
+				}
+
+				.title {
+					margin: 0.25rem;
+					border: 0.5rem solid #6e2c2c;
+					padding: 1rem;
+
+					border-radius: $radius;
+
+					text-transform: uppercase;
+
+					color: white;
+
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+
+					@for $i from 1 through 7 {
+						p:nth-child(#{$i}) {
+							animation-delay: ($i + 0s) / 2;
+						}
+					}
+
+					p {
+						text-align: center;
+						display: inline-block;
+
+						font-size: 2rem;
+						margin: 0.5rem;
+
+						animation: hop 1s linear infinite;
+
+						@keyframes hop {
+							0% {
+								transform: translateY(0px);
+							}
+
+							50% {
+								transform: translateY(-10px);
+							}
+
+							55% {
+								transform: translateY(-10px) rotateY(180deg);
+							}
+
+							80% {
+								transform: translateY(0px);
+							}
+
+							95% {
+								transform: translateY(2px);
+							}
+
+							100% {
+								transform: translateY(0px);
+							}
+						}
+					}
+				}
+			}
+		}
 
 		.buttons {
 			display: flex;
 			align-items: center;
-			justify-content: center;
-
-			margin: 1rem;
-
-			gap: 1rem;
-
+			justify-content: space-evenly;
 			width: 100%;
-
-			span {
-				width: max-content;
-				font-size: 1.5rem;
-				font-weight: bolder;
-				text-transform: uppercase;
-				-webkit-text-stroke: 1px black;
-
-				background: -webkit-linear-gradient(45deg, lightcoral, coral);
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-			}
 
 			.btn {
 				padding: 1rem 2rem;
@@ -116,18 +243,26 @@ body {
 				transition: $transition;
 				transition-timing-function: ease-in-out;
 
+				border: 2px dotted #dfdfdfbe;
+
 				&:hover {
+					border: 2px solid coral;
 					transform: translate(-5px, -5px);
 					box-shadow: 5px 5px 0px lightcoral;
 				}
 
 				&:active {
+					border: 2px solid white;
+
 					transform: translate(0px);
 					box-shadow: none;
 				}
 			}
+		}
 
-			width: 50%;
+		.info {
+			font-weight: normal;
+			justify-self: flex-end;
 		}
 	}
 }
