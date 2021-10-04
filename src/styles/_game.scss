@@ -19,11 +19,13 @@
 	background: white;
 	border-radius: $radius;
 
+	box-shadow: $light-shadow;
+
 	vertical-align: top;
 	text-align: center;
 
 	&.visible {
-		top: 50%;
+		top: 10%;
 	}
 }
 

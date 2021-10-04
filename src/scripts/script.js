@@ -104,6 +104,8 @@ const dispImg = document.querySelector(".displayImg");
 let canSpin = true;
 
 const spinWheel = (s) => {
+	console.log(`(${new Date().getTime()}) Spinning wheel.`);
+
 	if (!canSpin || pickableImages.length === 0 || userType === "player")
 		return;
 
@@ -111,10 +113,13 @@ const spinWheel = (s) => {
 
 	wheel.classList.add("spinning");
 	document.querySelector(".fadingText").classList.add("gone");
+
+	window.setTimeout(spinEnded, 1000);
 };
 
 let pickedIndex = 0;
-wheel.addEventListener("animationend", () => {
+const spinEnded = () => {
+	console.log(`(${new Date().getTime()}) Spin animation ended.`);
 	wheel.classList.remove("spinning");
 
 	showImage();
@@ -124,9 +129,10 @@ wheel.addEventListener("animationend", () => {
 		22.5
 	)}deg)`;
 	console.log(pickedIndex);
-});
+};
 
 const showImage = () => {
+	console.log(`(${new Date().getTime()}) Showing image.`);
 	let randomIDInPickableImages = Math.floor(
 		Math.random() * pickableImages.length
 	);
@@ -158,6 +164,8 @@ const showImage = () => {
 };
 
 const closeImage = () => {
+	console.log(`(${new Date().getTime()}) Closed image.`);
+
 	// Hide the image.
 	dispImg.classList.remove("visible");
 	document.querySelector(".closeImageText").classList.remove("visible");

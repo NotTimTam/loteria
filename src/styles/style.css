@@ -10,11 +10,12 @@
   pointer-events: none;
   background: white;
   border-radius: 1rem;
+  box-shadow: 0px 0px 15px black;
   vertical-align: top;
   text-align: center;
 }
 .closeImageText.visible {
-  top: 50%;
+  top: 10%;
 }
 
 .displayImg {
