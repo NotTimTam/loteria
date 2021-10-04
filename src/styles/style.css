@@ -21,7 +21,8 @@
   position: absolute;
   top: calc(100% + 50vh);
   left: 50%;
-  height: 50%;
+  height: 40%;
+  max-height: 25rem;
   padding: 1rem;
   transform: translate(-50%, -50%);
   background: white;
@@ -304,7 +305,7 @@
 }
 .game .tile {
   width: 60%;
-  border-radius: 1rem;
+  border-radius: 0.2rem;
   background-size: cover;
   -webkit-user-drag: none;
   transition: all 0.25s;

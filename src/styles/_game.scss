@@ -32,7 +32,8 @@
 	top: calc(100% + 50vh);
 	left: 50%;
 
-	height: 50%;
+	height: 40%;
+	max-height: 25rem;
 
 	padding: 1rem;
 
@@ -189,7 +190,7 @@
 		width: 60%;
 
 		// border: 0 solid transparent;
-		border-radius: $radius;
+		border-radius: 0.2rem;
 
 		background-size: cover;
 		-webkit-user-drag: none;
